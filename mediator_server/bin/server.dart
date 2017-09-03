@@ -1,4 +1,4 @@
-import 'dart:io';
+mport 'dart:io';
 import 'package:angel_common/angel_common.dart';
 import 'package:angel_hot/angel_hot.dart';
 import 'package:mediator_server/mediator_server.dart';
@@ -11,8 +11,8 @@ main() async {
   if (Platform.environment['ANGEL_ENV'] == 'production') {
     // In production, we don't want to hot-reload the server.
     // Let's start it like normal here.
-    var app = new Angel.secure('/etc/ssl/certs/nginx-selfsigned.crt',
-        '/etc/ssl/private/nginx-selfsigned.key');
+    var app = new Angel.secure('cert.pem',
+        'key.pem');
     server = await app.startServer(host, port = 443);
   } else {
     // In development, let's use hot-reloading on our server,
@@ -34,3 +34,4 @@ main() async {
 
   print('Listening at http://${server.address.address}:${server.port}');
 }
+
