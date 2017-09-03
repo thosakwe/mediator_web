@@ -1,0 +1,75 @@
+<mdc-drawer #drawer>
+    <span header>Pub Mediator</span>
+    <div class="mdc-list-group">
+        <mdc-list-item href="https://github.com/thosakwe/mediator_web" target="_blank">
+            <mdc-list-item-detail icon="launch"></mdc-list-item-detail>
+            Fork on Github
+        </mdc-list-item>
+        <mdc-list-divider></mdc-list-divider>
+        <mdc-list-item href="https://github.com/thosakwe/pub_mediator" target="_blank">
+            <mdc-list-item-detail icon="laptop_mac"></mdc-list-item-detail>
+            CLI version
+        </mdc-list-item>
+    </div>
+</mdc-drawer>
+
+<mdc-toolbar fixed>
+    <mdc-toolbar-section alignStart>
+        <mdc-icon (click)="drawer.show()" icon="menu" menuIcon></mdc-icon>
+        <div class="mdc-toolbar__title">Pub Mediator</div>
+    </mdc-toolbar-section>
+</mdc-toolbar>
+
+<mdc-snackbar #error actionText=" "></mdc-snackbar>
+
+<mdc-dialog #dialog>
+    <h2 *ngIf="result != null && result['conflicts']?.isEmpty == true" header>Good to go!</h2>
+    <h2 *ngIf="result != null && result['conflicts']?.isNotEmpty == true" header>
+        {{ result['conflicts'].length }} Dependency Conflict(s)
+    </h2>
+    <div>
+        <p *ngIf="result != null && result['conflicts'].isEmpty">You have no dependency conflicts in your pubspec. Run
+            `pub get`, and <i>get</i>
+            going!
+        </p>
+        <div *ngIf="result != null && result['conflicts'].isNotEmpty">
+            <div *ngFor="let conflict of result['conflicts']">
+                <b>{{conflict['name']}}:</b>
+                <ul>
+                    <li *ngFor="let requirement of conflict['requirements']">
+                        {{requirement['name']}} requires {{requirement['version']}}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <mdc-button (click)="dialog.close()" footer primary>Dismiss</mdc-button>
+</mdc-dialog>
+
+<main class="mdc-toolbar-fixed-adjust">
+    <x-ad clientId="ca-pub-2116133816688639" slot="5987705691"></x-ad>
+
+    <div *ngIf="loading" role="progressbar"
+         class="mdc-linear-progress mdc-linear-progress--indeterminate mdc-linear-progress--accent">
+        <div class="mdc-linear-progress__buffering-dots"></div>
+        <div class="mdc-linear-progress__buffer"></div>
+        <div class="mdc-linear-progress__bar mdc-linear-progress__primary-bar">
+            <span class="mdc-linear-progress__bar-inner"></span>
+        </div>
+        <div class="mdc-linear-progress__bar mdc-linear-progress__secondary-bar">
+            <span class="mdc-linear-progress__bar-inner"></span>
+        </div>
+    </div>
+
+    <div style="padding: 1em;">
+        <mdc-textfield [(ngModel)]="pubspec" [disabled]="loading" [rows]="25" hintText="Paste your pubspec.yaml here"
+                       multiLine fullWidth>
+        </mdc-textfield>
+
+        <mdc-fab (click)="handleClick()" [disabled]="loading">
+            <mdc-icon icon="arrow_forward"></mdc-icon>
+        </mdc-fab>
+    </div>
+</main>
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>

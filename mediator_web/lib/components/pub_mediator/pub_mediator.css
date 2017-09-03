@@ -1,0 +1,11 @@
+mdc-fab {
+    position: fixed;
+    bottom: 1em;
+    right: 1em;
+}
+
+x-ad {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}

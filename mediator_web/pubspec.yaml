@@ -1,0 +1,21 @@
+name: mediator_web
+publish_to: none
+author: Tobe O <thosakwe@gmail.com>
+dependencies:
+  angel_client: ^1.0.0
+  angular: ^4.0.0-beta
+  angular_forms: ^1.0.0
+  angular_router: ^1.0.0
+  material_components_web:
+    git: https://github.com/mdc-dart/material_components_web.git
+dev_dependencies:
+  browser: ^0.10.0
+  dart_to_js_script_rewriter: ^1.0.0
+dependency_overrides:
+  angular_forms: ^0.1.0
+  quiver: ^0.21.0
+transformers:
+  - angular:
+      entry_points:
+        - web/main.dart
+  - dart_to_js_script_rewriter

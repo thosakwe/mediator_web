@@ -1,0 +1,14 @@
+description: "An easily-extensible web server framework in Dart."
+homepage: "https://github.com/angel-dart/angel"
+name: "mediator_server"
+publish_to: "none"
+dependencies: 
+  angel_common: "^1.0.0"
+  pool: ^1.0.0
+  pub_mediator: ^1.0.1
+dev_dependencies: 
+  angel_hot: "^1.0.0"
+  angel_test: "^1.0.0"
+  test: "^0.12.0"
+environment: 
+  sdk: ">=1.19.0"
