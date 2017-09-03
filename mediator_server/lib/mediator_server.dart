@@ -7,8 +7,8 @@ import 'package:angel_common/angel_common.dart';
 import 'src/api.dart' as api;
 
 /// Generates and configures an Angel server.
-Future<Angel> createServer() async {
-  var app = new Angel()..lazyParseBodies = true;
+Future configureServer(Angel app) async {
+  app..lazyParseBodies = true;
 
   // Loads app configuration from 'config/'.
   // It supports loading from YAML files, and also supports loading a `.env` file.
@@ -50,6 +50,4 @@ Future<Angel> createServer() async {
   // Logs requests and errors to both console, and a file named `log.txt`.
   // https://github.com/angel-dart/diagnostics
   await app.configure(logRequests(new File('log.txt')));
-
-  return app;
 }

@@ -4,6 +4,7 @@ name: "mediator_server"
 publish_to: "none"
 dependencies: 
   angel_common: "^1.0.0"
+  angel_multiserver: ^1.0.0
   pool: ^1.0.0
   pub_mediator: ^1.0.1
 dev_dependencies: 
