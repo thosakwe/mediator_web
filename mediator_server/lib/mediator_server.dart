@@ -27,7 +27,10 @@ Future<Angel> createServer() async {
   // In production mode, it'll try to serve out of `build/web/`.
   //
   // https://github.com/angel-dart/static
-  await app.configure(new CachingVirtualDirectory());
+  await app.configure(new CachingVirtualDirectory(
+      source: new Directory(app.isProduction
+          ? '../mediator_web/build/web'
+          : '../mediator_web/web')));
 
   // Routes in `app.after` will only run if the request was not terminated by a prior handler.
   // Usually, this is a situation in which you'll want to throw a 404 error.
