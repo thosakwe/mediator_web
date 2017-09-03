@@ -1,7 +1,6 @@
 import 'dart:io';
 import 'package:angel_common/angel_common.dart';
 import 'package:angel_hot/angel_hot.dart';
-import 'package:angel_multiserver/angel_multiserver.dart';
 import 'package:mediator_server/mediator_server.dart';
 
 main() async {
@@ -10,11 +9,6 @@ main() async {
   int port = 3000;
 
   if (Platform.environment['ANGEL_ENV'] == 'production') {
-    // Mount a server on port 80 to force HTTPS redirects
-    var stub = new Angel()..before.add(forceHttps());
-    var stubServer = await stub.startServer(InternetAddress.ANY_IP_V4, 80);
-    print('Forcing HTTPS redirects from http://${stubServer.address}:${stubServer.port}');
-
     // In production, we don't want to hot-reload the server.
     // Let's start it like normal here.
     var app = new Angel.secure('/etc/ssl/certs/nginx-selfsigned.crt',
