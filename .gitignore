@@ -87,3 +87,6 @@ fabric.properties
 # Angel
 .env
 log.txt
+
+.idea/deployment.xml
+.idea/webServers.xml
