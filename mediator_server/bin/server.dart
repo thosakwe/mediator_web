@@ -5,13 +5,14 @@ import 'package:mediator_server/mediator_server.dart';
 
 main() async {
   HttpServer server;
-  InternetAddress host = InternetAddress.LOOPBACK_IP_V4;
+  InternetAddress host = InternetAddress.ANY_IP_V4;
   int port = 3000;
 
   if (Platform.environment['ANGEL_ENV'] == 'production') {
     // In production, we don't want to hot-reload the server.
     // Let's start it like normal here.
     var app = new Angel.secure('cert.pem', 'key.pem');
+    await app.configure(configureServer);
     server = await app.startServer(host, port = 443);
   } else {
     // In development, let's use hot-reloading on our server,

@@ -1,0 +1,7 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="force_https.dart" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application" singleton="true" nameIsGenerated="true">
+    <option name="filePath" value="$PROJECT_DIR$/mediator_server/bin/force_https.dart" />
+    <option name="workingDirectory" value="$PROJECT_DIR$/mediator_server" />
+    <method />
+  </configuration>
+</component>
