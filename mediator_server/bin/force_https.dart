@@ -4,7 +4,14 @@ import 'package:angel_multiserver/angel_multiserver.dart';
 
 main() async {
 // Mount a server on port 80 to force HTTPS redirects
-  var stub = new Angel()..before.add(forceHttps());
+  var stub = new Angel()
+    ..before.addAll([
+      (RequestContext req) {
+        print('Received plain HTTP request to ${req.io.requestedUri}');
+        return true;
+      },
+      forceHttps()
+    ]);
   var stubServer = await stub.startServer(InternetAddress.ANY_IP_V4, 80);
   print(
       'Forcing HTTPS redirects from http://${stubServer.address.address}:${stubServer.port}');
