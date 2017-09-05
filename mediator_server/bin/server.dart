@@ -17,13 +17,15 @@ main() {
 productionMain() async {
   HttpServer server;
   InternetAddress host = InternetAddress.ANY_IP_V4;
-  int port = 443;
+  int port = 80; //443;
 
-  var app = new Angel.secure('cert.pem', 'key.pem');
+  // Listening on port 80 instead of 443, leverage Cloudflare's HTTPS
+  //var app = new Angel.secure('cert.pem', 'key.pem');
+  var app = new Angel();
   await app.configure(configureServer);
   server = await app.startServer(host, port);
 
-  print('Listening at https://${server.address.address}:${server.port}');
+  print('Listening at http://${server.address.address}:${server.port}');
 }
 
 devMain() async {
