@@ -1,4 +1,4 @@
-@JS('adsbygoogle')
+@JS()
 library adsbygoogle;
 
 import 'package:js/js.dart';
