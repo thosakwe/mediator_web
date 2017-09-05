@@ -4,4 +4,10 @@ library adsbygoogle;
 import 'package:js/js.dart';
 
 @JS()
-external void push(x);
+external AdsByGoogle get adsbygoogle;
+
+@JS()
+abstract class AdsByGoogle {
+  @JS()
+  external void push(x);
+}
