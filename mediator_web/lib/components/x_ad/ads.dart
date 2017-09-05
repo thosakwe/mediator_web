@@ -9,5 +9,8 @@ external AdsByGoogle get adsbygoogle;
 @JS()
 abstract class AdsByGoogle {
   @JS()
+  external bool get loaded;
+
+  @JS()
   external void push(x);
 }

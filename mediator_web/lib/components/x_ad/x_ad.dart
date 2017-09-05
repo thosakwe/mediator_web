@@ -16,20 +16,24 @@ class XAdComponent implements AfterContentInit, OnDestroy {
 
   @override
   ngAfterContentInit() {
-    if (adsbygoogle == null) {
-      window.console.info('window.adsbygoogle is null');
-      _adblock.add(null);
-    } else {
-      try {
-        adsbygoogle.push(jsify({}));
-      } catch (e, st) {
+    new Timer(const Duration(seconds: 1), () {
+      if (adsbygoogle?.loaded != true) {
         window.console
-          ..error('Could not load advertisement...')
-          ..error(e)
-          ..error(st);
+          ..info('window.adsbygoogle is null')
+          ..info(adsbygoogle);
         _adblock.add(null);
+      } else {
+        try {
+          adsbygoogle.push(jsify({}));
+        } catch (e, st) {
+          window.console
+            ..error('Could not load advertisement...')
+            ..error(e)
+            ..error(st);
+          _adblock.add(null);
+        }
       }
-    }
+    });
   }
 
   @override
