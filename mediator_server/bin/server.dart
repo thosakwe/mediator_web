@@ -23,7 +23,7 @@ productionMain() async {
   await app.configure(configureServer);
   server = await app.startServer(host, port);
 
-  print('Listening at http://${server.address.address}:${server.port}');
+  print('Listening at https://${server.address.address}:${server.port}');
 }
 
 devMain() async {
